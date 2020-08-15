@@ -20,12 +20,10 @@
 	</tr>
 	
 	</table>
-	<button type="button" onclick="read_file()">show message</button>
-	<p id="demo"></p>
-	<form action="https://airform.io/your@email.com" method="post">
-  <input type="text" name="name" placeholder="Enter your name">
-  <textarea name="message" placeholder="Enter your message"></textarea>
-  <button>Send</button>
+	<form action="https://formspree.io/mrgydvve" method="POST">
+  	<label>Your email:<input type="text" name="_replyto"></label>
+  	<label>Your message:<textarea name="message"></textarea></label>
+  	<button type="submit">Send</button>
 	</form>
 	<script>
 		function read_file(){
