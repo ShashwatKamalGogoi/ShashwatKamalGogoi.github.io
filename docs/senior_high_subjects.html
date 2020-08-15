@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Senior High Subjects </title>
+	</head>
+	<body>
+		<table id ="list">
+		</table>
+		
+		<table id ="sub_sub_list">
+		</table>
+		<style>
+			td, li{
+				border: 2px solid black;
+			}
+			td{
+				width: 33%;
+			}
+		</style>
+		<script>
+			var i = 0;
+			var j = 0;
+			var l = 0;
+			var temp = "./senior_high";
+			var t_temp = "";
+			var list = "";
+			var sub_list = "";
+			var sub_sub_list = "";
+			var show = [false, false, false, false, false];
+			var sub_parts = [['previous_year_chapterwise', 'revision_dpp'], ['chapters', 'chapterwise_practice_docs', 'previous_year_chapterwise', 'revision_dpp'], ['JEE_advance_pattern', 'JEE_main_pattern'], ['chapterwise_module_questions_n_answers', 'previous_year_chapterwise', 'revision_dpp'], ['Question_Papers', 'Trend_analysis']];
+			var parts = ['Chemistry', 'Mathematics', 'Mock_Test_JEE', 'Physics', 'Previous_Year_Docs'];
+			
+			
+			
+			list += '<tr>';
+			for (var k = 0; k < parts.length; k++){
+				if (k == 3)
+				{
+					list += '</tr>'
+				}
+				list += '<td><h3 onclick="options(';
+				list += "'" + parts[k] + "'" ;
+				list += ')">'; 
+				list += parts[k] + '</h3><ul id="' + parts[k] + '"></ul></td>' ;
+			}
+			list += '</tr>';
+			
+			document.getElementById("list").innerHTML = list;
+			list = "";
+			
+			function options(x){
+				i = parts.indexOf(x);
+				console.log(i);
+				if (show[i] == false){
+					var count;
+					for (count = 0; count < sub_parts[i].length; count++)
+					{
+
+						sub_list += '<li><a onclick="';
+						sub_list += "show_files('";
+						sub_list += x + "'" + ',' + "'" + sub_parts[i][count] + "')";
+						sub_list += '"><h3>' + sub_parts[i][count] + '</h3></a></li>';
+
+					}
+					document.getElementById(x).innerHTML = sub_list;
+					sub_list = "";
+					show[i] = true;
+				}
+				else{
+					document.getElementById(x).innerHTML = "";
+					show[i] = false;
+				}
+			}
+			
+			var sub_sub_parts = [[['ALDEHYDES, KETONES , AND CARBOXYLIC ACIDS.pdf', 'ALOCHOLS, PHENOLS AND ETHERS.pdf', 'AMINES.pdf', 'ANALYTICAL CHEMISTRY.pdf', 'BIOMOLCULES.pdf', 'CHEMICAL BONDING AND MOLECULAR STRUCTURE.pdf', 'CHEMICAL KINETICS.pdf', 'CHEMISTRY IN EVERYDAY LIFE.pdf', 'CLASSIFICATION OF ELEMENTS AND PERIODICITY IN PROPERTIES.pdf', 'COORDINATION COMPOUNDS.pdf', 'D AND F BLOCK ELEMENTS.pdf', 'ELECTROCHEMISTRY.pdf', 'ENVIRONMENTAL CHEMISTRY.pdf', 'EQUILIBRIUM.pdf', 'GENERAL PRINCIPLES OF CHEMISTRY.pdf', 'HALOALKANES AND HALO ARENES.pdf', 'HYDROCARBONS.pdf', 'HYDROGEN.pdf', 'ORGANIC CHEMISTRY - SOME BASIC PRINCIPLES.pdf', 'P BLOCK ELEMENTS-2.pdf', 'P BLOCK ELEMENTS.pdf', 'POLYMERS.pdf', 'REDOX REACTIONS.pdf', 'SOLUTIONS.pdf', 'SOME BASIC CONCEPTS OF CHEMIST.pdf', 'STATES OF MATTER.pdf', 'STRUCTURE OF ATOM.pdf', 'SURFACE CHEMISTRY.pdf', 'THE S-BLOCK ELEMENTS.pdf', 'THE SOLID STATE.pdf', 'THERMODYNAMICS.pdf'], ['chem-1-Merged.pdf', 'chem-11-Cropped-Merged.pdf', 'chem-2-Merged.pdf', 'chem-3-Merged.pdf', 'chem-4-Merged.pdf', 'chem-5-Merged.pdf', 'chem-6-Merged.pdf', 'chem-7-Merged.pdf', 'chem-8-Merged.pdf', 'chem-9-Merged.pdf']], [[], ['3D Geometry_questions_n_answers.pdf', 'Applications of Derivative_questions_n_answers.pdf', 'Area_questions_n_answers.pdf', 'Binomial  Theorem_questions_n_answers.pdf', 'Circle_questions_n_answers.pdf', 'Complex  Number_questions_n_answers.pdf', 'Determinants_questions_n_answers.pdf', 'Differential  Equation_questions_n_answers.pdf', 'Ellipse_questions_n_answers.pdf', 'Functions  II_questions_n_answers.pdf', 'Functions_questions_n_answers.pdf', 'Hyperbola_questions_n_answers.pdf', 'Indefinite  Integration_questions_n_answers.pdf', 'Limits Continuity and  Differentia_questions_n_answers.pdf', 'Parabola_questions_n_answers.pdf', 'Permutation_Combination_questions_n_answers.pdf', 'Probability_questions_n_answers.pdf', 'Progressions  And Series_questions_n_answers.pdf', 'Quadratic Equations and Exp_questions_n_answers.pdf', 'Solns  of Triangle_questions_n_answers.pdf', 'Straight  Line_questions_n_answers.pdf', 'Trigonometric  Eqn_questions_n_answers.pdf', 'Trigonometry_questions_n_answers.pdf', 'Vectors_questions_n_answers.pdf'], ['3D GEOMETRY.pdf', 'APPLICATION OF DERIVATIVES.pdf', 'APPLICATION OF INTEGRALS.pdf', 'BINOMIAL THEOREM.pdf', 'COMPLEX NUMBERS AND QUADRATIC EQUATIONS.pdf', 'CONIC SECTIONS.pdf', 'CONTINUITY AND DIFFERENTIABILITY(1).pdf', 'DETERMINANTS.pdf', 'DIFFERENTIAL EQUATIONS.pdf', 'INTEGRALS.pdf', 'INVERSE TRIGONOMETRIC FUNCTIONS(1).pdf', 'LIMITS AND DERIVATIVES.pdf', 'LINEAR INEQUALITY.pdf', 'MATHEMATICAL INDUCTION.pdf', 'MATHEMATICAL REASONING.pdf', 'MATRICES.pdf', 'PERMUTATIONS AND COMBINATIONS.pdf', 'PROBABILITY-1.pdf', 'PROBABILITY-2.pdf', 'RELATIONS AND FUNCTIONS-1.pdf', 'RELATIONS AND FUNCTIONS-2.pdf', 'SEQUENCE AND SERIES.pdf', 'SETS.pdf', 'STRAIGHT LINES.pdf', 'TRIGONOMETRIC FUNCTIONS.pdf', 'VECTOR ALGEBRA.pdf'], ['mat-10-Merged.pdf', 'mat-11-Merged.pdf', 'mat-3-Merged.pdf', 'mat-4-Merged.pdf', 'mat-5-Merged.pdf', 'mat-6-Merged.pdf', 'mat-7-Merged.pdf', 'mat-8-Merged.pdf', 'mat-9-Merged.pdf']], [['2015_01_30_paper_1_n_paper_2_solution_resonance.pdf', '2015_01_30_paper_1_resonance.pdf', '2015_01_30_paper_2_resonance.pdf', '2015_02_16_paper_1_n_paper_2_solution_resonance.pdf', '2015_02_16_paper_1_resonance.pdf', '2015_02_16_paper_2_resonance.pdf'], ['2015_02_03_Test_1_resonance.pdf', '2015_02_03_Test_1_solution_resonance.pdf', '2015_02_09_Test_2_resonance.pdf', '2015_02_09_Test_2_solution_resonance.pdf', '2015_02_16_AIOT_resonance.pdf', 'Bansal_Mock_Test_1.pdf', 'Bansal_Mock_Test_10.pdf', 'Bansal_Mock_Test_10_solutions.pdf', 'Bansal_Mock_Test_12.pdf', 'Bansal_Mock_Test_12_solutions.pdf', 'Bansal_Mock_Test_14.pdf', 'Bansal_Mock_Test_14_solutions.pdf', 'Bansal_Mock_Test_17.pdf', 'Bansal_Mock_Test_17_solutions.pdf', 'Bansal_Mock_Test_1_solutions.pdf', 'Bansal_Mock_Test_2.pdf', 'Bansal_Mock_Test_2_solutions.pdf', 'Bansal_Mock_Test_4.pdf', 'Bansal_Mock_Test_4_solutions.pdf', 'Bansal_Mock_Test_5.pdf', 'Bansal_Mock_Test_5_solutions.pdf', 'Bansal_Mock_Test_6.pdf', 'Bansal_Mock_Test_6_solutions.pdf', 'Bansal_Mock_Test_7.pdf', 'Bansal_Mock_Test_7_solutions.pdf', 'Bansal_Mock_Test_8.pdf', 'Bansal_Mock_Test_8_solutions.pdf']], [['ALTERNATING  CURRENT_module_sample_questions_n_answers.pdf', 'CAPACITANCE _module_sample_questions_n_answers.pdf', 'CURRENT  ELECTRICITY_module_sample_questions_n_answers.pdf', 'DIFFRACTION-OF-LIGHT-_-POLARISATION _module_sample_questions_n_answers.pdf', 'ELASTICITY _module_sample_questions_n_answers.pdf', 'ELECTROMAGNETIC  INDUCTION_module_sample_questions_n_answers.pdf', 'ELECTROMAGNETIC  WAVES-THEORY_module_sample_questions_n_answers.pdf', 'ELECTRONICS-SEMI-CONDUCTOR-THEORY _module_sample_questions_n_answers.pdf', 'ELECTROSTATICS _module_sample_questions_n_answers.pdf', 'GRAVITATION _module_sample_questions_n_answers.pdf', 'INTERFERENCE-OF-LIGHT _module_sample_questions_n_answers.pdf', 'LOGIC-GATES _module_sample_questions_n_answers.pdf', 'MAGNETIC  EFFECTS OF CURRENT_module_sample_questions_n_answers.pdf', 'MAGNETISM-THEORY _module_sample_questions_n_answers.pdf', 'METHOD  OF IMPULSE AND MOMENTUM_module_sample_questions_n_answers.pdf', 'MODERN-PHYSICS _module_sample_questions_n_answers.pdf', 'NEWTONS  LAWS OF MOTION_module_sample_questions_n_answers.pdf', 'PARTICLE  KINEMATICS_module_sample_questions_n_answers.pdf', 'PRACTICAL  PHYSICS_module_sample_questions_n_answers.pdf', 'PRINCIPLES-OF-COMMUNICATION-SYSTEM _module_sample_questions_n_answers.pdf', 'RAY-THEORY-PART1 _module_sample_questions_n_answers.pdf', 'RAY-THEORY-PART2 _module_sample_questions_n_answers.pdf', 'ROTATIONAL  MOTION_module_sample_questions_n_answers.pdf', 'TEMPERATURE  SCALES_module_sample_questions_n_answers.pdf', 'WAVE  THEORY_module_sample_questions_n_answers.pdf', 'WORK  ENERGY_module_sample_questions_n_answers.pdf'], ['ALTERNATING CURRENT.pdf', 'ATOMS.pdf', 'COMMUNICATION SYSTEMS.pdf', 'CURRENT ELECTRICITY.pdf', 'DUAL NATURE OF RADIATION.pdf', 'ELECTRIC CHARGES AND FIELDS.pdf', 'ELECTRO MAGNETIC INDUCTION.pdf', 'ELECTRO MAGNETIC WAVES.pdf', 'ELECTRO STATIC POTENTIAL AND CAPACITANCE.pdf', 'GRAVITATION.pdf', 'KINETIC THEORY.pdf', 'LAWS OF MOTION.pdf', 'MAGNEISM AND MATTER.pdf', 'MECHANICAL PROPERTIES OF FLUIDS.pdf', 'MECHANICAL PROPERTIES OF SOLIDS.pdf', 'MOTION IN A PLANE.pdf', 'MOTION IN A STRAIGHT LINE.pdf', 'MOVING CHARGES AND MAGNETISM.pdf', 'NUCLEI.pdf', 'OSCILLATIONS.pdf', 'PHYSICAL WORLD, UNITS AND MEASUREMENTS.pdf', 'RAY OPTICS.pdf', 'ROTATIONAL MOTION.pdf', 'SEMI CONDUCTOR ELECTRONIC MATERIALS , DEVICES AND SIMPLE CIRCUITS.pdf', 'THERMAL PROPERTIES OF MATTER.pdf', 'THERMODYNAMICS.pdf', 'WAVE OPTICS.pdf', 'WAVES.pdf', 'WORK ENERGY POWER.pdf'], ['phy-1-Merged.pdf', 'phy-10-Merged.pdf', 'phy-11-Merged.pdf', 'phy-2-Merged.pdf', 'phy-3-Merged.pdf', 'phy-4-Merged.pdf', 'phy-5-Merged.pdf', 'phy-6-Merged.pdf', 'phy-7-Merged.pdf', 'phy-8-Merged.pdf', 'phy-9-Merged.pdf']], [['JEE MAIN 2018 SOLVED PAPERS.pdf', 'JEE MAIN 2019 SOLVED PAPERS.pdf'], ['JEE MAIN TREND ANALYSIS(2010-2019) .pdf']]];
+			
+			function show_files(y,z){
+				l = parts.indexOf(y);
+				j = sub_parts[l].indexOf(z);
+				var count; 
+				sub_sub_list += '<tr><th><h2>' + sub_sub_parts[l][j].length + ' Files: (Below)</h2></th></tr>'
+				for (count = 0; count < sub_sub_parts[l][j].length; count++)
+				{
+					t_temp = temp;
+					t_temp += '/' + y + '/' + z + '/' + sub_sub_parts[l][j][count];
+					sub_sub_list += '<tr><td><h3>' + sub_sub_parts[l][j][count] + '</h3></td><td><a href="' + t_temp + '" target = "_blank"><h3>Download</h3></a></td><td><a onclick="';
+					sub_sub_list += "show_pdf('" + t_temp + "')" + '"><h3>View</h3></a></td></tr>';
+				}
+				document.getElementById("sub_sub_list").innerHTML = sub_sub_list;
+				sub_sub_list = "";
+			}
+			
+			function show_pdf(url){
+				<!-- location.replace("docs/pdf_display.html?" + url + ""); -->
+				var win = window.open('pdf_display.html?' + url, '_blank');
+				win.focus();
+			}
+		</script>
+	</body>
+</html>
